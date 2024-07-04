@@ -1,7 +1,9 @@
 import { provinces } from "@/data/data";
-export async function GET(request: Request) {
-  const parts = request.url.split("/");
-  const code = parts[parts.length - 1];
+export async function GET(
+  request: Request,
+  { params }: { params: { code: string } }
+) {
+  const code = params.code;
   const data = provinces.find((item) => item.code === code);
   return Response.json({ data });
 }
